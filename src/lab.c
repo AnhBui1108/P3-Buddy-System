@@ -23,7 +23,7 @@
     } while (0)
 
 /**
- * Helper fucntion to inseart free block into the free list for given k
+ * Helper fucntion to insert free block into the free list for given k
  */
 static void insert_free_block(struct buddy_pool *pool, unsigned int k, struct avail *block){
     block->tag = BLOCK_AVAIL;
@@ -120,8 +120,10 @@ void *buddy_malloc(struct buddy_pool *pool, size_t size)
         block->kval =i;
     }
     block->tag = BLOCK_RESERVED;
+
     /* Return pointer to memory right after the header */
-    return (void *)((char *)block +sizeof(struct avail));
+    // return (void *)((char *)block +sizeof(struct avail));
+    return (void *)(block + 1);
 
 }
 
@@ -175,7 +177,7 @@ void *buddy_realloc(struct buddy_pool *pool, void *ptr, size_t size)
     if(new_k <= block->kval)
         return ptr;
     
-    //Otherwise, allocate a new block and cope over the data
+    //Otherwise, allocate a new block and copy over the data
     void *new_ptr = buddy_malloc(pool, size);
     if(!new_ptr){
         errno = ENOMEM;
