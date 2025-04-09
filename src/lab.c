@@ -263,20 +263,20 @@ void buddy_destroy(struct buddy_pool *pool)
  * This function can be useful to visualize the bits in a block. This can
  * help when figuring out the buddy_calc function!
  */
-static void printb(unsigned long int b)
-{
-     size_t bits = sizeof(b) * 8;
-     unsigned long int curr = UINT64_C(1) << (bits - 1);
-     for (size_t i = 0; i < bits; i++)
-     {
-          if (b & curr)
-          {
-               printf("1");
-          }
-          else
-          {
-               printf("0");
-          }
-          curr >>= 1L;
-     }
-}
+// static void printb(unsigned long int b)
+// {
+//      size_t bits = sizeof(b) * 8;
+//      unsigned long int curr = UINT64_C(1) << (bits - 1);
+//      for (size_t i = 0; i < bits; i++)
+//      {
+//           if (b & curr)
+//           {
+//                printf("1");
+//           }
+//           else
+//           {
+//                printf("0");
+//           }
+//           curr >>= 1L;
+//      }
+// }

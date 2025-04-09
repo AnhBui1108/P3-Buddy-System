@@ -8,6 +8,7 @@
 #endif
 #include "harness/unity.h"
 #include "../src/lab.h"
+#include <string.h>
 
 
 void setUp(void) {
